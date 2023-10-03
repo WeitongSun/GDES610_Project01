@@ -2,59 +2,363 @@
 <html>
 
 <head>
-    <title>GDES610 What's up</title>
+    <title>Artificial Intelligence (AI)</title>
     <meta http-equiv="Content-type" content="text/html" charset= "utf-8">
     <meta name = "viewport"
     content="initial-scale=0.60, minimum-scale=0,60, maximum-scale=0.60"> 
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body{
-            background-color: rgb(208, 239, 178);
+            margin: 0 auto;
+	        color: #fff;
+            cursor: url('img/cursor.gif'), auto;
+        }
+        img:hover {
+            display: block;
         }
 
         .Nav{
-            position: sticky;
-            top: 0;
+            width:auto;
+            background-color: #ffffff;
+            margin: 2px auto;
+            display: flex;
+            align-items: center;
         }
-        .tittle{
+        ul{
+            flex: 1;
+            text-align: center;
+        }
+
+        ul li{
+            display: inline-block;
+            list-style: none;
+            margin: 0 150px;
+        }
+
+        ul li a{
+            text-decoration: none;
+            color: black;
+            padding: 0 10px;
+            position: relative;
+        }
+        ul li a::after{
+            content:'';
+            width:0;
+            height:10px;
+            background: rgb(241, 83, 175);
+            position: absolute;
+            left: 50%;
+            transform:translate(-50%);
+            top:-55px;
+            transition: 0.5s;
+        }
+        ul li a:hover::after{
+            width:100%;
+        }
+
+        a:link {
+            color: rgb(0, 0, 0);
+            background-color: transparent;
+            
+        }
+        a:hover {
+            color: rgb(241, 83, 175);
+            background-color: transparent;
+            text-decoration: none;
+        }
+        a:active {
+            color: yellow;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        .banner{
+            width:auto;
+            height:470px;
+            /*border:3px solid white; */     
+        }
+
+    
+        .circle1 {
+            position: absolute;
+            height: 25px;
+            width: 25px;
+            top:150px;
+            left:260px;
+            stroke: 2px;
+            -webkit-text-stroke-color: #b9b8b8;
+            background-color: #b9b8b8;
+            border-radius: 50%;
+        }
+        .circle1:hover{
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            position: relative;
+            background: radial-gradient(circle at bottom, #81e8f6, #76deef 10%, #055194 80%, #062745 100%); 
+            /* width:100%;
+            height: 100%;
+            background-image: url("img/Me.JPG");
+            background-position: center;
+            background-repeat: no-repeat, repeat;
+            align-items: center; */
+           
+        }
+        
+        .circle1:hover::before {
+            content: "";
+            position: absolute;
+            top: 1%;
+            left: 5%;
+            width: 90%;
+            height: 90%;
+            border-radius: 100%;
+            background: radial-gradient(circle at top, white, rgba(255, 255, 255, 0) 58%);
+            -webkit-filter: blur(5px);
+            filter: blur(5px);
+            z-index: 2; 
+        }
+        .circle1:hover::after {
+            content: "";
+            position: absolute;
+            display: none;
+            top: 5%;
+            left: 10%;
+            width: 80%;
+            height: 80%;
+            border-radius: 100%;
+            -webkit-filter: blur(1px);
+            filter: blur(1px);
+            z-index: 2;
+            -webkit-transform: rotateZ(-30deg);
+            transform: rotateZ(-30deg); 
+        }
+        .circle1 .shadow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
+            -webkit-transform: rotateX(90deg) translateZ(-160px);
+            transform: rotateX(90deg) translateZ(-160px);
+            z-index: 1; 
+        }
+        .circle1.plain {
+            background: black; 
+        }
+        .circle1.plain:before, .circle1.plain:after {
+            display: none; 
+        }
+        .circle1.bubble {
+            background: radial-gradient(circle at 50% 55%, rgba(240, 245, 255, 0.9), rgba(240, 245, 255, 0.9) 40%, rgba(225, 238, 255, 0.8) 60%, rgba(43, 130, 255, 0.4));
+            -webkit-animation: bubble-anim 2s ease-in 0.5s infinite;
+            animation: bubble-anim 2s ease-in 0.5s infinite; 
+        }
+        .circle1.bubble:before {
+            -webkit-filter: blur(0);
+            filter: blur(0);
+            height: 80%;
+            width: 40%;
+            background: radial-gradient(circle at 130% 130%, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.8) 58%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 100%);
+            -webkit-transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg);
+            transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg); }
+        .circle1.bubble:after {
+            display: block;
+            background: radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 74%, white 80%, white 84%, rgba(255, 255, 255, 0) 100%); }
+
+        .stage {
+            width: 300px;
+            height: 300px;
+            display: inline-block;
+            margin: 20px;
+            -webkit-perspective: 1200px;
+            -moz-perspective: 1200px;
+            -ms-perspective: 1200px;
+            -o-perspective: 1200px;
+            perspective: 1200px;
+            -webkit-perspective-origin: 50% 50%;
+            -moz-perspective-origin: 50% 50%;
+            -ms-perspective-origin: 50% 50%;
+            -o-perspective-origin: 50% 50%;
+            perspective-origin: 50% 50%;
+        }
+
+        @-webkit-keyframes bubble-anim {
+            0% {
+                -webkit-transform: scale(1);
+                transform: scale(1); }
+
+            20% {
+                -webkit-transform: scaleY(0.95) scaleX(1.05);
+                transform: scaleY(0.95) scaleX(1.05); }
+
+            48% {
+                -webkit-transform: scaleY(1.1) scaleX(0.9);
+                transform: scaleY(1.1) scaleX(0.9); }
+
+            68% {
+                -webkit-transform: scaleY(0.98) scaleX(1.02);
+                transform: scaleY(0.98) scaleX(1.02); }
+
+            80% {
+                -webkit-transform: scaleY(1.02) scaleX(0.98);
+                transform: scaleY(1.02) scaleX(0.98); }
+
+            97%, 100% {
+                -webkit-transform: scale(1);
+                transform: scale(1); } 
+        }
+
+        @keyframes bubble-anim {
+            0% {
+                -webkit-transform: scale(1);
+                transform: scale(1); }
+
+            20% {
+                -webkit-transform: scaleY(0.95) scaleX(1.05);
+                transform: scaleY(0.95) scaleX(1.05); }
+
+            48% {
+                -webkit-transform: scaleY(1.1) scaleX(0.9);
+                transform: scaleY(1.1) scaleX(0.9); }
+
+            68% {
+                -webkit-transform: scaleY(0.98) scaleX(1.02);
+                transform: scaleY(0.98) scaleX(1.02); }
+
+            80% {
+                -webkit-transform: scaleY(1.02) scaleX(0.98);
+                transform: scaleY(1.02) scaleX(0.98); }
+
+            97%, 100% {
+                -webkit-transform: scale(1);
+                transform: scale(1); } 
+        }
+        
+
+        .circle2 {
+            position: absolute;
+            height: 25px;
+            width: 25px;
+            top:300px;
+            left:560px;
+            stroke: 2px;
+            -webkit-text-stroke-color: #b9b8b8;
+            background-color: #b9b8b8;
+            border-radius: 50%;
+        }
+        .circle2:hover{
+            position: absolute;
+            top: 100px;
+            left:100px;
+            width:100%;
+            height: 100%;
+            background-image: url("img/Me.JPG");
+            background-position: center;
+            background-repeat: no-repeat, repeat;
+            align-items: center;
+        }
+        .circle3 {
+            position: absolute;
+            height: 25px;
+            width: 25px;
+            top:450px;
+            left:150px;
+            stroke: 2px;
+            -webkit-text-stroke-color: #b9b8b8;
+            background-color: #b9b8b8;
+            border-radius: 50%;
+        }
+        .circle4 {
+            position: absolute;
+            height: 25px;
+            width: 25px;
+            top:450px;
+            right:220px;
+            stroke: 2px;
+            -webkit-text-stroke-color: #b9b8b8;
+            background-color: #b9b8b8;
+            border-radius: 50%;
+        }
+        .circle5 {
+            position: absolute;
+            height: 25px;
+            width: 25px;
+            top:210px;
+            right:100px;
+            stroke: 2px;
+            -webkit-text-stroke-color: #b9b8b8;
+            background-color: #b9b8b8;
+            border-radius: 50%;
+        }
+        .trapezoid{
+            position: absolute;
+            z-index: -100;
+            border-Top: 0px solid transparent;
+            border-bottom: 550px solid #000000;
+            border-left: 400px solid transparent;
+            border-right: 400px solid transparent;
+	        width: 125px;
+            top:0px;
+            left:260px;
+        }
+
+
+        .folder li{
+            z-index: 20;
+            display: inline-block;
+            list-style: none;
+            margin: 0 80px;
+        }
+        .floating {
+            animation-name: floating;
+            animation-duration: 2.5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+            margin-left: 0px;
+            margin-top: 5px;
+        }
+
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, -0px); }
+        }
+
+
+
+
+        .x li{
+            display: inline-block;
+            list-style: none;
+            margin: 0 115px;
+        }
+        .x button{
+            background-color: white;
+        }
+
+        .x button:hover{
+            cursor: ;
+        }
+
+        /* .tittle{
             text-align: center;
             font-family: serif;
             font-size: 80px;
         }
         .tittle:hover {
-        height: 600px;
-        font-size: 0px;
-        background-image: url("img/Me.JPG");
-        background-position: center;
-        background-repeat: no-repeat, repeat;
-        align-items: center;
-      }
+            height: 600px;
+            font-size: 0px;
+            background-image: url("img/Me.JPG");
+            background-position: center;
+            background-repeat: no-repeat, repeat;
+            align-items: center;
+      } */
 
-
-        a:link {
-            color: rgb(0, 0, 0);
-            background-color: transparent;
-            text-decoration: none;
-            display: inline-block;
-            padding: 15px 25px;
-            text-align: center;
-            text-decoration: none;
-        }
-        a:visited {
-            color: pink;
-            background-color: transparent;
-            text-decoration: none;
-        }
-        a:hover {
-            color: rgb(241, 83, 175);
-            background-color: transparent;
-            text-decoration: underline;
-        }
-        a:active {
-            color: yellow;
-            background-color: transparent;
-            text-decoration: underline;
-        }
+        
         
     </style>
     
@@ -62,19 +366,57 @@
 <body>
      <!-- Navigation Section -->
      <div class="Nav">
-     <center><a id="home" href="/index.html"><img src="img/eyeball.png" width="100px"></a></center>
-     <a href="/AboutMe.html">AboutMe</a>
-     <!-- <a href="/AboutMe.html"><img src="img/Me.JPG" width = "68 px"></a> -->
+        <ul class="left-nav">
+            <li><a href="/AboutMe.html">aboutMe</a></li>
+            <li><a href="/index.html"><img src="img/eyeball.png" width="100px"></a></li>  
+            <li><a href="https://chat.openai.com/">contactMe</a></li>
+        </ul>
     </div>
+
+    <!-- Main Page -->
+    <div class="banner">
+        <div class="stage">
+            <div class="circle1 bubble"></div>
+            <div class="circle2 bubble floating"></div>
+            <div class="circle3 bubblefloating"></div>
+            <div class="circle4 bubble floating"></div>
+            <div class="circle5 bubble floating"></div>
+            <div class="trapezoid"></div>
+        </div>
+    </div>
+
+
+    <div class="folder floating">
+        <ul>
+            <li><img src="img/red.png" width="100px" title="rgb(255,0,0)"></li>
+            <li><img src="img/green.png" width="100px" title="rgb(0,255,0)"></li>
+            <li><img src="img/blue.png" width="100px" title="rgb(0,0,255)"></li>
+        </ul>  
+   
+    </div>
+
+    <div class="x">
+        <ul>
+            <li><button type="button" onclick="myFunction()">❌</button></li>
+            <li><button type="button" onclick="myFunction()">❌</button></li>
+            <li><button type="button" onclick="myFunction()">❌</button></li>
+        </ul>  
+   
+    </div>
+
+    <script>
+    var msg = ["Are you sure?","Don't do it.","STOP!"];
+    var i = Math.floor(math.random() * 2);
+   
+    function myFunction() {
+        alert(msg[i]);
+        //alert(msg[Math.floor(i)]);
+    }
+    </script>
+
+
+<!--
     
-
-    <!-- Page Title -->
-    <div class="tittle">
-        <h1>Artificial Intelligence (AI)</h1>
-    </div>
-
-
-    <!-- Week 3 Assignment -->
     <fieldset>
         <legend>Week 3 Assignment</legend>
 
@@ -84,14 +426,14 @@
         <a href="/profile04.html">Pink</a><br> 
     </fieldset>
     
-     <!-- Week 4 Assignment -->
+     
      <fieldset>
         <legend>Week 4 Assignment</legend>
         <a href="/3.1.html" target = "_blank" >🔍</a><br>
         <a href="/3.3.html">🔍</a><br>
         <a href="/3.4.html">🔍</a><br>
      </fieldset>
- 
+    -->
     
 </body>
 
