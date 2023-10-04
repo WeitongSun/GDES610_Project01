@@ -1,350 +1,673 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Artificial Intelligence (AI)</title>
-    <meta http-equiv="Content-type" content="text/html" charset= "utf-8">
-    <meta name = "viewport"
-    content="initial-scale=0.60, minimum-scale=0,60, maximum-scale=0.60"> 
+    <meta http-equiv="Content-type" content="text/html" charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=0.60, minimum-scale=0,60, maximum-scale=0.60"
+    />
+
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
-        body{
-            margin: 0 auto;
-	        color: #fff;
-            cursor: url('img/cursor.gif'), auto;
-        }
-        img:hover {
-            display: block;
-        }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background-color: rgb(255, 255, 255);
+        margin: 0 auto;
+        color: #fff;
+        cursor: url("img/cursor.gif"), auto;
+      }
 
-        .Nav{
-            width:auto;
-            background-color: #ffffff;
-            margin: 2px auto;
-            display: flex;
-            align-items: center;
-        }
-        ul{
-            flex: 1;
-            text-align: center;
-        }
+      .Nav {
+        width: auto;
+        background-color: rgb(255, 255, 255);
+        margin: 0px auto;
+        display: flex;
+        align-items: center;
+      }
+      ul {
+        flex: 1;
+        text-align: center;
+      }
+      ul li {
+        display: inline-block;
+        list-style: none;
+        margin: 0 150px;
+      }
+      ul li a {
+        font-size: medium;
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        padding: 0 10px;
+        position: relative;
+      }
+      ul li a::after {
+        content: "";
+        width: 0;
+        height: 10px;
+        background: rgb(241, 83, 175);
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        top: -55px;
+        transition: 0.5s;
+      }
+      ul li a:hover::after {
+        width: 100%;
+      }
+      a:link {
+        color: rgb(0, 0, 0);
+        background-color: transparent;
+      }
+      a:hover {
+        color: rgb(241, 83, 175);
+        background-color: transparent;
+        text-decoration: none;
+      }
+      a:active {
+        color: yellow;
+        background-color: transparent;
+        text-decoration: none;
+      }
 
-        ul li{
-            display: inline-block;
-            list-style: none;
-            margin: 0 150px;
-        }
 
-        ul li a{
-            text-decoration: none;
-            color: black;
-            padding: 0 10px;
-            position: relative;
-        }
-        ul li a::after{
-            content:'';
-            width:0;
-            height:10px;
-            background: rgb(241, 83, 175);
-            position: absolute;
-            left: 50%;
-            transform:translate(-50%);
-            top:-55px;
-            transition: 0.5s;
-        }
-        ul li a:hover::after{
-            width:100%;
-        }
+    /*banner!!!!!!*/
+    /*banner!!!!!!*/
+    /*banner!!!!!!*/
+      .banner {
+        width: auto;
+        height: 500px;
+      }
 
-        a:link {
-            color: rgb(0, 0, 0);
-            background-color: transparent;
-            
-        }
-        a:hover {
-            color: rgb(241, 83, 175);
-            background-color: transparent;
-            text-decoration: none;
-        }
-        a:active {
-            color: yellow;
-            background-color: transparent;
-            text-decoration: none;
-        }
+      .circle1 {
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        top: 100px;
+        left: 260px;
+        border-radius: 50%;
+      }
+      .img_circle{
+        visibility: hidden;
+        position:relative;
+      }
+      .circle1:hover .img_circle{
+        visibility: visible;
+        position:relative;
+        top: 80px;
+        left:60px;
+      }
 
-        .banner{
-            width:auto;
-            height:470px;
-            /*border:3px solid white; */     
-        }
 
-    
-        .circle1 {
-            position: absolute;
-            height: 25px;
-            width: 25px;
-            top:150px;
-            left:260px;
-            stroke: 2px;
-            -webkit-text-stroke-color: #b9b8b8;
-            background-color: #b9b8b8;
-            border-radius: 50%;
-        }
-        .circle1:hover{
-            display: inline-block;
-            width: 100%;
-            height: 100%;
-            border-radius: 100%;
-            position: relative;
-            background: radial-gradient(circle at bottom, #81e8f6, #76deef 10%, #055194 80%, #062745 100%); 
-            /* width:100%;
+      .circle1:hover {
+        display: absolute;
+        top: 10px;
+        left: 100px;
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        position: flex;
+        background: radial-gradient(
+          circle at bottom,
+          #81e8f6,
+          #76deef 10%,
+          #055194 80%,
+          #062745 100%
+        );
+        /* width:100%;
             height: 100%;
             background-image: url("img/Me.JPG");
             background-position: center;
             background-repeat: no-repeat, repeat;
             align-items: center; */
-           
-        }
-        
-        .circle1:hover::before {
-            content: "";
-            position: absolute;
-            top: 1%;
-            left: 5%;
-            width: 90%;
-            height: 90%;
-            border-radius: 100%;
-            background: radial-gradient(circle at top, white, rgba(255, 255, 255, 0) 58%);
-            -webkit-filter: blur(5px);
-            filter: blur(5px);
-            z-index: 2; 
-        }
-        .circle1:hover::after {
-            content: "";
-            position: absolute;
-            display: none;
-            top: 5%;
-            left: 10%;
-            width: 80%;
-            height: 80%;
-            border-radius: 100%;
-            -webkit-filter: blur(1px);
-            filter: blur(1px);
-            z-index: 2;
-            -webkit-transform: rotateZ(-30deg);
-            transform: rotateZ(-30deg); 
-        }
-        .circle1 .shadow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
-            -webkit-transform: rotateX(90deg) translateZ(-160px);
-            transform: rotateX(90deg) translateZ(-160px);
-            z-index: 1; 
-        }
-        .circle1.plain {
-            background: black; 
-        }
-        .circle1.plain:before, .circle1.plain:after {
-            display: none; 
-        }
-        .circle1.bubble {
-            background: radial-gradient(circle at 50% 55%, rgba(240, 245, 255, 0.9), rgba(240, 245, 255, 0.9) 40%, rgba(225, 238, 255, 0.8) 60%, rgba(43, 130, 255, 0.4));
-            -webkit-animation: bubble-anim 2s ease-in 0.5s infinite;
-            animation: bubble-anim 2s ease-in 0.5s infinite; 
-        }
-        .circle1.bubble:before {
-            -webkit-filter: blur(0);
-            filter: blur(0);
-            height: 80%;
-            width: 40%;
-            background: radial-gradient(circle at 130% 130%, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.8) 58%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 100%);
-            -webkit-transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg);
-            transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg); }
-        .circle1.bubble:after {
-            display: block;
-            background: radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 74%, white 80%, white 84%, rgba(255, 255, 255, 0) 100%); }
+      }
 
-        .stage {
-            width: 300px;
-            height: 300px;
-            display: inline-block;
-            margin: 20px;
-            -webkit-perspective: 1200px;
-            -moz-perspective: 1200px;
-            -ms-perspective: 1200px;
-            -o-perspective: 1200px;
-            perspective: 1200px;
-            -webkit-perspective-origin: 50% 50%;
-            -moz-perspective-origin: 50% 50%;
-            -ms-perspective-origin: 50% 50%;
-            -o-perspective-origin: 50% 50%;
-            perspective-origin: 50% 50%;
-        }
+      .circle1:hover::before {
+        content: "";
+        position: absolute;
+        top: 1%;
+        left: 5%;
+        width: 90%;
+        height: 90%;
+        border-radius: 100%;
+        background: radial-gradient(
+          circle at top,
+          white,
+          rgba(255, 255, 255, 0) 58%
+        );
+        -webkit-filter: blur(5px);
+        filter: blur(5px);
+        z-index: 2;
+      }
+      .circle1:hover::after {
+        content: "";
+        position: absolute;
+        display: none;
+        top: 5%;
+        left: 10%;
+        width: 80%;
+        height: 80%;
+        border-radius: 100%;
+        -webkit-filter: blur(1px);
+        filter: blur(1px);
+        z-index: 2;
+        -webkit-transform: rotateZ(-30deg);
+        transform: rotateZ(-30deg);
+      }
+      .circle1 .shadow {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle,
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.1) 40%,
+          rgba(0, 0, 0, 0) 50%
+        );
+        -webkit-transform: rotateX(90deg) translateZ(-160px);
+        transform: rotateX(90deg) translateZ(-160px);
+        z-index: 1;
+      }
+      .circle1.plain {
+        background: black;
+      }
+      .circle1.plain:before,
+      .circle1.plain:after {
+        display: none;
+      }
+      .circle1.bubble {
+        background: radial-gradient(
+          circle at 50% 55%,
+          rgba(240, 245, 255, 0.9),
+          rgba(240, 245, 255, 0.9) 40%,
+          rgba(225, 238, 255, 0.8) 60%,
+          rgba(43, 130, 255, 0.4)
+        );
+        -webkit-animation: bubble-anim 2s ease-in 0.5s infinite;
+        animation: bubble-anim 2s ease-in 0.5s infinite;
+      }
+      .circle1.bubble:before {
+        -webkit-filter: blur(0);
+        filter: blur(0);
+        height: 80%;
+        width: 40%;
+        background: radial-gradient(
+          circle at 130% 130%,
+          rgba(255, 255, 255, 0) 0,
+          rgba(255, 255, 255, 0) 46%,
+          rgba(255, 255, 255, 0.8) 50%,
+          rgba(255, 255, 255, 0.8) 58%,
+          rgba(255, 255, 255, 0) 60%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        -webkit-transform: translateX(131%) translateY(58%) rotateZ(168deg)
+          rotateX(10deg);
+        transform: translateX(131%) translateY(58%) rotateZ(168deg)
+          rotateX(10deg);
+      }
+      .circle1.bubble:after {
+        display: block;
+        background: radial-gradient(
+          circle at 50% 80%,
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 0) 74%,
+          white 80%,
+          white 84%,
+          rgba(255, 255, 255, 0) 100%
+        );
+      }
 
-        @-webkit-keyframes bubble-anim {
-            0% {
-                -webkit-transform: scale(1);
-                transform: scale(1); }
+      .stage {
+        width: 300px;
+        height: 300px;
+        display: inline-block;
+        margin: 20px;
+        -webkit-perspective: 1200px;
+        -moz-perspective: 1200px;
+        -ms-perspective: 1200px;
+        -o-perspective: 1200px;
+        perspective: 1200px;
+        -webkit-perspective-origin: 50% 50%;
+        -moz-perspective-origin: 50% 50%;
+        -ms-perspective-origin: 50% 50%;
+        -o-perspective-origin: 50% 50%;
+        perspective-origin: 50% 50%;
+      }
 
-            20% {
-                -webkit-transform: scaleY(0.95) scaleX(1.05);
-                transform: scaleY(0.95) scaleX(1.05); }
-
-            48% {
-                -webkit-transform: scaleY(1.1) scaleX(0.9);
-                transform: scaleY(1.1) scaleX(0.9); }
-
-            68% {
-                -webkit-transform: scaleY(0.98) scaleX(1.02);
-                transform: scaleY(0.98) scaleX(1.02); }
-
-            80% {
-                -webkit-transform: scaleY(1.02) scaleX(0.98);
-                transform: scaleY(1.02) scaleX(0.98); }
-
-            97%, 100% {
-                -webkit-transform: scale(1);
-                transform: scale(1); } 
-        }
-
-        @keyframes bubble-anim {
-            0% {
-                -webkit-transform: scale(1);
-                transform: scale(1); }
-
-            20% {
-                -webkit-transform: scaleY(0.95) scaleX(1.05);
-                transform: scaleY(0.95) scaleX(1.05); }
-
-            48% {
-                -webkit-transform: scaleY(1.1) scaleX(0.9);
-                transform: scaleY(1.1) scaleX(0.9); }
-
-            68% {
-                -webkit-transform: scaleY(0.98) scaleX(1.02);
-                transform: scaleY(0.98) scaleX(1.02); }
-
-            80% {
-                -webkit-transform: scaleY(1.02) scaleX(0.98);
-                transform: scaleY(1.02) scaleX(0.98); }
-
-            97%, 100% {
-                -webkit-transform: scale(1);
-                transform: scale(1); } 
-        }
-        
-
-        .circle2 {
-            position: absolute;
-            height: 25px;
-            width: 25px;
-            top:300px;
-            left:560px;
-            stroke: 2px;
-            -webkit-text-stroke-color: #b9b8b8;
-            background-color: #b9b8b8;
-            border-radius: 50%;
-        }
-        .circle2:hover{
-            position: absolute;
-            top: 100px;
-            left:100px;
-            width:100%;
-            height: 100%;
-            background-image: url("img/Me.JPG");
-            background-position: center;
-            background-repeat: no-repeat, repeat;
-            align-items: center;
-        }
-        .circle3 {
-            position: absolute;
-            height: 25px;
-            width: 25px;
-            top:450px;
-            left:150px;
-            stroke: 2px;
-            -webkit-text-stroke-color: #b9b8b8;
-            background-color: #b9b8b8;
-            border-radius: 50%;
-        }
-        .circle4 {
-            position: absolute;
-            height: 25px;
-            width: 25px;
-            top:450px;
-            right:220px;
-            stroke: 2px;
-            -webkit-text-stroke-color: #b9b8b8;
-            background-color: #b9b8b8;
-            border-radius: 50%;
-        }
-        .circle5 {
-            position: absolute;
-            height: 25px;
-            width: 25px;
-            top:210px;
-            right:100px;
-            stroke: 2px;
-            -webkit-text-stroke-color: #b9b8b8;
-            background-color: #b9b8b8;
-            border-radius: 50%;
-        }
-        .trapezoid{
-            position: absolute;
-            z-index: -100;
-            border-Top: 0px solid transparent;
-            border-bottom: 550px solid #000000;
-            border-left: 400px solid transparent;
-            border-right: 400px solid transparent;
-	        width: 125px;
-            top:0px;
-            left:260px;
+      @-webkit-keyframes bubble-anim {
+        0% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
         }
 
-
-        .folder li{
-            z-index: 20;
-            display: inline-block;
-            list-style: none;
-            margin: 0 80px;
-        }
-        .floating {
-            animation-name: floating;
-            animation-duration: 2.5s;
-            animation-iteration-count: infinite;
-            animation-timing-function: ease-in-out;
-            margin-left: 0px;
-            margin-top: 5px;
+        20% {
+          -webkit-transform: scaleY(0.95) scaleX(1.05);
+          transform: scaleY(0.95) scaleX(1.05);
         }
 
-        @keyframes floating {
-            0% { transform: translate(0, 0px); }
-            50% { transform: translate(0, 15px); }
-            100% { transform: translate(0, -0px); }
+        48% {
+          -webkit-transform: scaleY(1.1) scaleX(0.9);
+          transform: scaleY(1.1) scaleX(0.9);
         }
 
-
-
-
-        .x li{
-            display: inline-block;
-            list-style: none;
-            margin: 0 115px;
-        }
-        .x button{
-            background-color: white;
+        68% {
+          -webkit-transform: scaleY(0.98) scaleX(1.02);
+          transform: scaleY(0.98) scaleX(1.02);
         }
 
-        .x button:hover{
-            cursor: ;
+        80% {
+          -webkit-transform: scaleY(1.02) scaleX(0.98);
+          transform: scaleY(1.02) scaleX(0.98);
         }
 
-        /* .tittle{
+        97%,
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      @keyframes bubble-anim {
+        0% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+
+        20% {
+          -webkit-transform: scaleY(0.95) scaleX(1.05);
+          transform: scaleY(0.95) scaleX(1.05);
+        }
+
+        48% {
+          -webkit-transform: scaleY(1.1) scaleX(0.9);
+          transform: scaleY(1.1) scaleX(0.9);
+        }
+
+        68% {
+          -webkit-transform: scaleY(0.98) scaleX(1.02);
+          transform: scaleY(0.98) scaleX(1.02);
+        }
+
+        80% {
+          -webkit-transform: scaleY(1.02) scaleX(0.98);
+          transform: scaleY(1.02) scaleX(0.98);
+        }
+
+        97%,
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      .circle2 {
+        position: absolute;
+        height: 25px;
+        width: 25px;
+        top: 300px;
+        left: 560px;
+        stroke: 2px;
+        -webkit-text-stroke-color: #b9b8b8;
+        background-color: #b9b8b8;
+        border-radius: 50%;
+      }
+      .img_circle2{
+        visibility: hidden;
+        position:relative;
+      }
+      .circle2:hover .img_circle2{
+        visibility: visible;
+        position:relative;
+        top: 80px;
+        left:84px;
+      }
+      
+      .circle2:hover {
+        position: absolute;
+        top: 100px;
+        left: 500px;
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        position: flex;
+        background: radial-gradient(
+          circle at bottom,
+          #81e8f6,
+          #76deef 10%,
+          #055194 80%,
+          #062745 100%
+        );
+      }
+
+      .circle2:hover::before {
+        content: "";
+        position: absolute;
+        top: 1%;
+        left: 5%;
+        width: 90%;
+        height: 90%;
+        border-radius: 100%;
+        background: radial-gradient(
+          circle at top,
+          white,
+          rgba(255, 255, 255, 0) 58%
+        );
+        -webkit-filter: blur(5px);
+        filter: blur(5px);
+        z-index: 2;
+      }
+      .circle2:hover::after {
+        content: "";
+        position: absolute;
+        display: none;
+        top: 5%;
+        left: 10%;
+        width: 80%;
+        height: 80%;
+        border-radius: 100%;
+        -webkit-filter: blur(1px);
+        filter: blur(1px);
+        z-index: 2;
+        -webkit-transform: rotateZ(-30deg);
+        transform: rotateZ(-30deg);
+      }
+      .circle2 .shadow {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle,
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.1) 40%,
+          rgba(0, 0, 0, 0) 50%
+        );
+        -webkit-transform: rotateX(90deg) translateZ(-160px);
+        transform: rotateX(90deg) translateZ(-160px);
+        z-index: 1;
+      }
+      .circle2.plain {
+        background: black;
+      }
+      .circle2.plain:before,
+      .circle1.plain:after {
+        display: none;
+      }
+      .circle2.bubble {
+        background: radial-gradient(
+          circle at 50% 55%,
+          rgba(240, 245, 255, 0.9),
+          rgba(240, 245, 255, 0.9) 40%,
+          rgba(225, 238, 255, 0.8) 60%,
+          rgba(43, 130, 255, 0.4)
+        );
+        -webkit-animation: bubble-anim 2s ease-in 0.5s infinite;
+        animation: bubble-anim 2s ease-in 0.5s infinite;
+      }
+      .circle2.bubble:before {
+        -webkit-filter: blur(0);
+        filter: blur(0);
+        height: 80%;
+        width: 40%;
+        background: radial-gradient(
+          circle at 130% 130%,
+          rgba(255, 255, 255, 0) 0,
+          rgba(255, 255, 255, 0) 46%,
+          rgba(255, 255, 255, 0.8) 50%,
+          rgba(255, 255, 255, 0.8) 58%,
+          rgba(255, 255, 255, 0) 60%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        -webkit-transform: translateX(131%) translateY(58%) rotateZ(168deg)
+          rotateX(10deg);
+        transform: translateX(131%) translateY(58%) rotateZ(168deg)
+          rotateX(10deg);
+      }
+      .circle2.bubble:after {
+        display: block;
+        background: radial-gradient(
+          circle at 50% 80%,
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 0) 74%,
+          white 80%,
+          white 84%,
+          rgba(255, 255, 255, 0) 100%
+        );
+      }
+
+      .circle3 {
+        position: absolute;
+        height: 25px;
+        width: 25px;
+        top: 200px;
+        left: 1080px;
+        border-radius: 50%;
+      }
+      .img_circle3{
+        visibility: hidden;
+        position:relative;
+      }
+      .circle3:hover .img_circle3{
+        visibility: visible;
+        position:relative;
+        top: 80px;
+        left:60px;
+      }
+
+      .circle3:hover {
+        position: absolute;
+        top: 100px;
+        right: 350px;
+        width: 300px;
+        height: 300px;
+        border-radius: 100%;
+        position: flex;
+        background: radial-gradient(
+          circle at bottom,
+          #81e8f6,
+          #76deef 10%,
+          #055194 80%,
+          #062745 100%
+        );
+      }
+      .circle3:hover::before {
+        content: "";
+        position: absolute;
+        top: 1%;
+        left: 5%;
+        width: 90%;
+        height: 90%;
+        border-radius: 100%;
+        background: radial-gradient(
+          circle at top,
+          white,
+          rgba(255, 255, 255, 0) 58%
+        );
+        -webkit-filter: blur(5px);
+        filter: blur(5px);
+        z-index: 2;
+      }
+      .circle3:hover::after {
+        content: "";
+        position: absolute;
+        display: none;
+        top: 5%;
+        left: 10%;
+        width: 80%;
+        height: 80%;
+        border-radius: 100%;
+        -webkit-filter: blur(1px);
+        filter: blur(1px);
+        z-index: 2;
+        -webkit-transform: rotateZ(-30deg);
+        transform: rotateZ(-30deg);
+      }
+      .circle3 .shadow {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle,
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.1) 40%,
+          rgba(0, 0, 0, 0) 50%
+        );
+        -webkit-transform: rotateX(90deg) translateZ(-160px);
+        transform: rotateX(90deg) translateZ(-160px);
+        z-index: 1;
+      }
+      .circle3.plain {
+        background: black;
+      }
+      .circle3.plain:before,
+      .circle1.plain:after {
+        display: none;
+      }
+      .circle3.bubble {
+        background: radial-gradient(
+          circle at 50% 55%,
+          rgba(240, 245, 255, 0.9),
+          rgba(240, 245, 255, 0.9) 40%,
+          rgba(225, 238, 255, 0.8) 60%,
+          rgba(43, 130, 255, 0.4)
+        );
+        -webkit-animation: bubble-anim 2s ease-in 0.5s infinite;
+        animation: bubble-anim 2s ease-in 0.5s infinite;
+      }
+      .circle3.bubble:before {
+        -webkit-filter: blur(0);
+        filter: blur(0);
+        height: 80%;
+        width: 40%;
+        background: radial-gradient(
+          circle at 130% 130%,
+          rgba(255, 255, 255, 0) 0,
+          rgba(255, 255, 255, 0) 46%,
+          rgba(255, 255, 255, 0.8) 50%,
+          rgba(255, 255, 255, 0.8) 58%,
+          rgba(255, 255, 255, 0) 60%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        -webkit-transform: translateX(131%) translateY(58%) rotateZ(168deg)
+          rotateX(10deg);
+        transform: translateX(131%) translateY(58%) rotateZ(168deg)
+          rotateX(10deg);
+      }
+      .circle3.bubble:after {
+        display: block;
+        background: radial-gradient(
+          circle at 50% 80%,
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 0) 74%,
+          white 80%,
+          white 84%,
+          rgba(255, 255, 255, 0) 100%
+        );
+      }
+
+      .trapezoid {
+        position: inline-block;
+        z-index: -100;
+        width: 800px;
+        height: 200px;
+        margin: 0px 200px 50px 310px;
+        border-bottom: 450px solid black;
+        border-left: 350px solid transparent;
+        border-right: 350px solid transparent;
+      }
+      .blink {
+        animation: blink-animation 1s steps(5, start) infinite;
+        -webkit-animation: blink-animation 1s steps(5, start) infinite;
+      }
+      @keyframes blink-animation {
+        to {
+          visibility: hidden;
+        }
+      }
+      @-webkit-keyframes blink-animation {
+        to {
+          visibility: hidden;
+        }
+      }
+
+      .folder li {
+        z-index: 20;
+        display: inline-block;
+        list-style: none;
+        margin: 0 80px;
+      }
+      .floating {
+        animation-name: floating;
+        animation-duration: 2.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+        margin-left: 0px;
+        margin-top: 5px;
+      }
+      @keyframes floating {
+        0% {
+          transform: translate(0, 0px);
+        }
+        50% {
+          transform: translate(0, 15px);
+        }
+        100% {
+          transform: translate(0, -0px);
+        }
+      }
+      .img_description {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(183, 183, 183, 0.72);
+        color: #fff;
+        visibility: hidden;
+        opacity: 0;
+
+        /* transition effect. not necessary */
+        transition: opacity 0.2s, visibility 0.2s;
+      }
+
+      .folder li:hover .img_description {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .x li {
+        display: inline-block;
+        list-style: none;
+        margin: 0 115px;
+      }
+      .x button {
+        background-color: white;
+      }
+
+      div#container {
+        height: 500px;
+        width: 1000px;
+      }
+
+      div.a {
+        width: 70px;
+        height: 75px;
+        background-image: url("img/bin.png");
+        background-color: red;
+        position: fixed;
+      }
+
+      /* .tittle{
             text-align: center;
             font-family: serif;
             font-size: 80px;
@@ -357,85 +680,142 @@
             background-repeat: no-repeat, repeat;
             align-items: center;
       } */
-
-        
-        
     </style>
-    
-</head>
-<body>
-     <!-- Navigation Section -->
-     <div class="Nav">
-        <ul class="left-nav">
-            <li><a href="/AboutMe.html">aboutMe</a></li>
-            <li><a href="/index.html"><img src="img/eyeball.png" width="100px"></a></li>  
-            <li><a href="https://chat.openai.com/">contactMe</a></li>
-        </ul>
+  </head>
+  <body>
+    <!-- Navigation Section -->
+    <div class="Nav">
+      <ul>
+        <li><a href="/AboutMe.html">aboutMe</a></li>
+        <li><a href="/index.html"><img src="img/eyeball.png" width="100px" /></a></li>
+        <li><a href="https://chat.openai.com/">contactMe</a></li>
+      </ul>
     </div>
 
     <!-- Main Page -->
     <div class="banner">
         <div class="stage">
-            <div class="circle1 bubble"></div>
-            <div class="circle2 bubble floating"></div>
-            <div class="circle3 bubblefloating"></div>
+            <div class="circle1 bubble floating">
+                <div class="img_circle"><img src="img/aivcu.png" width="200px"></div>
+            </div>
+
+            <div class="circle2 bubble floating">
+                <div class="img_circle2"><img src="img/pcover.png" width="120px"></div>
+            </div>
+
+            <div class="circle3 bubble floating">
+                <div class="img_circle3"><img src="img/idrva.png" width="200px"></div>
+            </div>
+
             <div class="circle4 bubble floating"></div>
             <div class="circle5 bubble floating"></div>
-            <div class="trapezoid"></div>
-        </div>
+            <div class="trapezoid blink"></div>
+      </div>
     </div>
 
-
     <div class="folder floating">
-        <ul>
-            <li><img src="img/red.png" width="100px" title="rgb(255,0,0)"></li>
-            <li><img src="img/green.png" width="100px" title="rgb(0,255,0)"></li>
-            <li><img src="img/blue.png" width="100px" title="rgb(0,0,255)"></li>
-        </ul>  
-   
+      <ul>
+        <li>
+          <img src="img/red.png" width="100px" />
+          <p class="img_description">rgb(255,0,0)</p>
+        </li>
+        <li>
+          <img src="img/green.png" width="100px" />
+          <p class="img_description">rgb(0,255,0)</p>
+        </li>
+        <li>
+          <img src="img/blue.png" width="100px" />
+          <p class="img_description">rgb(0,0,255)</p>
+        </li>
+      </ul>
     </div>
 
     <div class="x">
-        <ul>
-            <li><button type="button" onclick="myFunction()">❌</button></li>
-            <li><button type="button" onclick="myFunction()">❌</button></li>
-            <li><button type="button" onclick="myFunction()">❌</button></li>
-        </ul>  
-   
+      <ul>
+        <li><button type="button" onclick="myFunction()">❌</button></li>
+        <li><button type="button" onclick="myFunction()">❌</button></li>
+        <li><button type="button" onclick="myFunction()">❌</button></li>
+      </ul>
+    </div>
+
+    <div id="container">
+      <div class="a"><img src="img/bin.png" width="70px"></div>
     </div>
 
     <script>
-    var msg = ["Are you sure?","Don't do it.","STOP!"];
-    var i = Math.floor(math.random() * 2);
-   
-    function myFunction() {
+        ////////js实践///////////
+        ////////js实践///////////
+        ////////js实践///////////
+        ////////js实践///////////
+      let msg = ["Are you sure?", "Don't do it.", "STOP!"];
+      let i = Math.floor(Math.random() * 3);
+
+      function myFunction() {
         alert(msg[i]);
-        //alert(msg[Math.floor(i)]);
-    }
+        location.reload();
+      }
+
+      $(document).ready(function () {
+        animateDiv($(".a"));
+      });
+
+      function makeNewPosition($container) {
+        // Get viewport dimensions (remove the dimension of the div)
+        var h = $container.height() - 50;
+        var w = $container.width() - 50;
+
+        var nh = Math.floor(Math.random() * h);
+        var nw = Math.floor(Math.random() * w);
+
+        return [nh, nw];
+      }
+
+      function animateDiv($target) {
+        var newq = makeNewPosition($target.parent());
+        var oldq = $target.offset();
+        var speed = calcSpeed([oldq.top, oldq.left], newq);
+
+        $target.animate(
+          {
+            top: newq[0],
+            left: newq[1],
+          },
+          speed,
+          function () {
+            animateDiv($target);
+          }
+        );
+      }
+
+      function calcSpeed(prev, next) {
+        var x = Math.abs(prev[1] - next[1]);
+        var y = Math.abs(prev[0] - next[0]);
+
+        var greatest = x > y ? x : y;
+
+        var speedModifier = 0.1;
+
+        var speed = Math.ceil(greatest / speedModifier);
+
+        return speed;
+      }
     </script>
 
+    <!-- // <fieldset>
+    //     <legend>Week 3 Assignment</legend>
 
-<!--
-    
-    <fieldset>
-        <legend>Week 3 Assignment</legend>
-
-        <a href="/profile01.html">AI Cat</a><br>
-        <a href="/profile02.html">ASCII Me</a><br>
-        <a href="/profile03.html">Ball</a><br>
-        <a href="/profile04.html">Pink</a><br> 
-    </fieldset>
+    //     <a href="/profile01.html">AI Cat</a><br>
+    //     <a href="/profile02.html">ASCII Me</a><br>
+    //     <a href="/profile03.html">Ball</a><br>
+    //     <a href="/profile04.html">Pink</a><br> 
+    // </fieldset>
     
      
-     <fieldset>
-        <legend>Week 4 Assignment</legend>
-        <a href="/3.1.html" target = "_blank" >🔍</a><br>
-        <a href="/3.3.html">🔍</a><br>
-        <a href="/3.4.html">🔍</a><br>
-     </fieldset>
-    -->
-    
-</body>
-
-
+    //  <fieldset>
+    //     <legend>Week 4 Assignment</legend>
+    //     <a href="/3.1.html" target = "_blank" >🔍</a><br>
+    //     <a href="/3.3.html">🔍</a><br>
+    //     <a href="/3.4.html">🔍</a><br>
+    //  </fieldset> -->
+  </body>
 </html>
