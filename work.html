@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Bridge</title>
 
     <style>
       .Nav {
@@ -20,7 +20,7 @@
       ul li {
         display: inline-block;
         list-style: none;
-        margin: 0 50px;
+        margin: 0 150px;
       }
       ul li a {
         font-size: medium;
@@ -34,7 +34,6 @@
         background: rgb(241, 83, 175);
         position: absolute;
         left: 50%;
-       
       }
       ul li a:hover::after {
         width: 100%;
@@ -53,19 +52,18 @@
         background-color: transparent;
         text-decoration: none;
       }
-
-
       /*banner!!!!!!*/
       /*banner!!!!!!*/
       /*banner!!!!!!*/
       .banner {
         width: auto;
-        height: 500px;
+        height: auto;
       }
-
-
-
-
+      .banner iframe{
+        position: absolute;
+        top: 150px;
+        left: 242px;
+      }
     </style>
   </head>
   <body>
@@ -81,21 +79,11 @@
     </div>
 
     <div class="banner">
-        <ul>
-            <br>
-            <br>
-            <br><br>
-            <br>
-            <br>
-            <br>
-            <li><a href="/rw.html"><img src="img/w1.png" width="300px"></a><br /></li>
-            <li>
-                <a href="/work.html"><img src="https://i.pinimg.com/originals/2b/07/f6/2b07f62987e987d4e53e84aa8b963b83.gif" width="100px"></a>
-            </li>
-            <li><a href="/bw.html"><img src="img/w2.png" width="300px"></a><br /></li>
-        </ul>
-      
-      
+        <iframe src="https://player.vimeo.com/video/785705611?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="1000" height="500" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="HyperDog, 2022"></iframe>
     </div>
+
+
+
+
   </body>
 </html>
