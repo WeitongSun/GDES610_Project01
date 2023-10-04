@@ -81,10 +81,9 @@
         text-decoration: none;
       }
 
-
-    /*banner!!!!!!*/
-    /*banner!!!!!!*/
-    /*banner!!!!!!*/
+      /*banner!!!!!!*/
+      /*banner!!!!!!*/
+      /*banner!!!!!!*/
       .banner {
         width: auto;
         height: 500px;
@@ -98,17 +97,16 @@
         left: 260px;
         border-radius: 50%;
       }
-      .img_circle{
+      .img_circle {
         visibility: hidden;
-        position:relative;
+        position: relative;
       }
-      .circle1:hover .img_circle{
+      .circle1:hover .img_circle {
         visibility: visible;
-        position:relative;
+        position: relative;
         top: 80px;
-        left:60px;
+        left: 60px;
       }
-
 
       .circle1:hover {
         display: absolute;
@@ -322,17 +320,17 @@
         background-color: #b9b8b8;
         border-radius: 50%;
       }
-      .img_circle2{
+      .img_circle2 {
         visibility: hidden;
-        position:relative;
+        position: relative;
       }
-      .circle2:hover .img_circle2{
+      .circle2:hover .img_circle2 {
         visibility: visible;
-        position:relative;
+        position: relative;
         top: 80px;
-        left:84px;
+        left: 84px;
       }
-      
+
       .circle2:hover {
         position: absolute;
         top: 100px;
@@ -453,15 +451,15 @@
         left: 1080px;
         border-radius: 50%;
       }
-      .img_circle3{
+      .img_circle3 {
         visibility: hidden;
-        position:relative;
+        position: relative;
       }
-      .circle3:hover .img_circle3{
+      .circle3:hover .img_circle3 {
         visibility: visible;
-        position:relative;
+        position: relative;
         top: 80px;
-        left:60px;
+        left: 60px;
       }
 
       .circle3:hover {
@@ -581,9 +579,10 @@
         width: 800px;
         height: 200px;
         margin: 0px 200px 50px 310px;
-        border-bottom: 450px solid black;
+        border-bottom: 450px solid;
         border-left: 350px solid transparent;
         border-right: 350px solid transparent;
+        color: rgb(0, 0, 0);
       }
       .blink {
         animation: blink-animation 1s steps(5, start) infinite;
@@ -626,11 +625,11 @@
         }
       }
       .img_description {
+        width: 50%;
+        height: 30%;
         position: absolute;
         top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        left: 360px;
         background: rgba(183, 183, 183, 0.72);
         color: #fff;
         visibility: hidden;
@@ -667,6 +666,19 @@
         position: fixed;
       }
 
+      .AI{
+        position: absolute;
+        top:260px;
+        left:630px;
+        text-align: center;
+        width:auto;
+      }
+      .AI a{
+        color:black;
+        font-size: 30px;
+
+      }
+
       /* .tittle{
             text-align: center;
             font-family: serif;
@@ -687,44 +699,54 @@
     <div class="Nav">
       <ul>
         <li><a href="/AboutMe.html">aboutMe</a></li>
-        <li><a href="/index.html"><img src="img/eyeball.png" width="100px" /></a></li>
+        <li>
+          <a href="/index.html"><img src="img/eyeball.png" width="100px" /></a>
+        </li>
         <li><a href="https://chat.openai.com/">contactMe</a></li>
       </ul>
     </div>
 
     <!-- Main Page -->
     <div class="banner">
-        <div class="stage">
-            <div class="circle1 bubble floating">
-                <div class="img_circle"><img src="img/aivcu.png" width="200px"></div>
-            </div>
+      <div class="stage">
+        <div class="circle1 bubble floating">
+          <div class="img_circle">
+            <img src="img/aivcu.png" width="200px" />
+          </div>
+        </div>
 
-            <div class="circle2 bubble floating">
-                <div class="img_circle2"><img src="img/pcover.png" width="120px"></div>
-            </div>
+        <div class="circle2 bubble floating">
+          <div class="img_circle2">
+            <img src="img/pcover.png" width="120px" />
+          </div>
+        </div>
 
-            <div class="circle3 bubble floating">
-                <div class="img_circle3"><img src="img/idrva.png" width="200px"></div>
-            </div>
+        <div class="circle3 bubble floating">
+          <div class="img_circle3">
+            <img src="img/idrva.png" width="200px" />
+          </div>
+        </div>
 
-            <div class="circle4 bubble floating"></div>
-            <div class="circle5 bubble floating"></div>
-            <div class="trapezoid blink"></div>
+        <div class="circle4 bubble floating"></div>
+        <div class="circle5 bubble floating"></div>
+
+        <div id="trapezoid" class="trapezoid blink"></div>
+        <div class="AI"><a href="/w1.html">Artificial Intelligence (AI)</a></div>
       </div>
     </div>
 
     <div class="folder floating">
       <ul>
         <li>
-          <img src="img/red.png" width="100px" />
+          <img id="red" src="img/red.png" width="100px" />
           <p class="img_description">rgb(255,0,0)</p>
         </li>
         <li>
-          <img src="img/green.png" width="100px" />
+          <img id="green" src="img/green.png" width="100px" onclick="col()" />
           <p class="img_description">rgb(0,255,0)</p>
         </li>
         <li>
-          <img src="img/blue.png" width="100px" />
+          <img id="blue" src="img/blue.png" width="100px" onclick="col()" />
           <p class="img_description">rgb(0,0,255)</p>
         </li>
       </ul>
@@ -739,20 +761,30 @@
     </div>
 
     <div id="container">
-      <div class="a"><img src="img/bin.png" width="70px"></div>
+      <div class="a">
+        <img src="img/bin.png" width="100px" />
+        <img src="img/w.png" width="100px" />
+      </div>
     </div>
 
     <script>
-        ////////js实践///////////
-        ////////js实践///////////
-        ////////js实践///////////
-        ////////js实践///////////
+      ////////js实践///////////
+      ////////js实践///////////
+      ////////js实践///////////
+      ////////js实践///////////
+      let r = 0;
+      let g = 0;
+      let b = 0;
+
       let msg = ["Are you sure?", "Don't do it.", "STOP!"];
       let i = Math.floor(Math.random() * 3);
 
       function myFunction() {
         alert(msg[i]);
         location.reload();
+        // Change the color of the shape when the image is clicked
+        r = 255;
+        document.getElementById("trapezoid").style.color = rgb(r, g, b);
       }
 
       $(document).ready(function () {
