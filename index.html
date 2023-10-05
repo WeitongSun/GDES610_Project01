@@ -19,6 +19,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <style>
+        @font-face {
+            font-family: 'pixelFont';
+            src: url("Font/PressStart2P.ttf");
+        }
       * {
         box-sizing: border-box;
       }
@@ -27,11 +31,13 @@
         margin: 0 auto;
         color: #fff;
         cursor: url("img/cursor.gif"), auto;
+        background-image: url('https://i.imgur.com/XI7fa.png');
+        background-size: contain;
       }
 
       .Nav {
         width: auto;
-        background-color: rgb(255, 255, 255);
+        background-color: rgba(234, 221, 221, 0.632);
         margin: 0px auto;
         display: flex;
         align-items: center;
@@ -46,13 +52,14 @@
         margin: 0 150px;
       }
       ul li a {
-        font-size: medium;
+        font-family: 'pixelFont';
+        font-size: small;
         text-decoration: none;
         color: rgb(0, 0, 0);
         padding: 0 10px;
         position: relative;
       }
-      ul li a::after {
+      /* ul li a::after {
         content: "";
         width: 0;
         height: 10px;
@@ -62,7 +69,7 @@
         transform: translate(-50%);
         top: -55px;
         transition: 0.5s;
-      }
+      } */
       ul li a:hover::after {
         width: 100%;
       }
@@ -89,6 +96,11 @@
         height: 500px;
       }
 
+      /*circle One*/
+      /*circle One*/
+      /*circle One*/
+      /*circle One*/
+      /*circle One*/
       .circle1 {
         position: absolute;
         height: 30px;
@@ -309,6 +321,10 @@
         }
       }
 
+      /*circle Two*/
+      /*circle Two*/
+      /*circle Two*/
+      /*circle Two*/
       .circle2 {
         position: absolute;
         height: 25px;
@@ -443,6 +459,10 @@
         );
       }
 
+      /*circle Three*/
+      /*circle Three*/
+      /*circle Three*/
+      /*circle Three*/
       .circle3 {
         position: absolute;
         height: 25px;
@@ -573,6 +593,9 @@
         );
       }
 
+      /*trapezoidtrapezoidtrapezoidtrapezoidtrapezoidtrapezoidtrapezoidtrapezoidtrapezoidtrapezoid*/
+      /*trapezoidtrapezoidtrapezoidtrapezoidtrapezoidtrapezoidtrapezoidtrapezoidtrapezoidtrapezoid*/
+      /*trapezoidtrapezoidtrapezoidtrapezoidtrapezoidtrapezoidtrapezoidtrapezoidtrapezoidtrapezoid*/
       .trapezoid {
         position: inline-block;
         z-index: -100;
@@ -599,6 +622,9 @@
         }
       }
 
+      /*folderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolder*/
+      /*folderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolder*/
+      /*folderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolder*/
       .folder li {
         z-index: 20;
         display: inline-block;
@@ -644,56 +670,52 @@
         opacity: 1;
       }
 
+      /*Xicon for  Delete!!!*/
+      /*Xicon for  Delete!!!*/ /*Xicon for  Delete!!!*/
       .x li {
         display: inline-block;
         list-style: none;
         margin: 0 115px;
       }
       .x button {
-        background-color: white;
+        background-color: rgb(197, 196, 196);
       }
 
+      /*floating Trash Can*/
+      /*floating Trash Can*/
+      /*floating Trash Can*/
       div#container {
         height: 500px;
         width: 1000px;
       }
-
       div.a {
         width: 70px;
         height: 75px;
         background-image: url("img/bin.png");
-        background-color: red;
+        
         position: fixed;
       }
 
-      .AI{
+      /*AI TEXT  AI TEXT  AI TEXT  AI TEXT  AI TEXT  AI TEXT  AI TEXT  */
+      .AI {
+        z-index: -4;
         position: absolute;
-        top:260px;
-        left:630px;
+        top: 260px;
+        left: 630px;
         text-align: center;
-        width:auto;
+        width: auto;
+        text-decoration: none;
+        
       }
-      .AI a{
-        color:black;
+      .AI a {
+        font-family: 'pixleFont';
+        color: black;
         font-size: 30px;
-
+        text-decoration: none;
       }
-
-      /* .tittle{
-            text-align: center;
-            font-family: serif;
-            font-size: 80px;
-        }
-        .tittle:hover {
-            height: 600px;
-            font-size: 0px;
-            background-image: url("img/Me.JPG");
-            background-position: center;
-            background-repeat: no-repeat, repeat;
-            align-items: center;
-      } */
     </style>
   </head>
+
   <body>
     <!-- Navigation Section -->
     <div class="Nav">
@@ -731,7 +753,9 @@
         <div class="circle5 bubble floating"></div>
 
         <div id="trapezoid" class="trapezoid blink"></div>
-        <div class="AI"><a href="/w1.html">Artificial Intelligence (AI)</a></div>
+        <div class="AI">
+          <a href="/w1.html">Artificial Intelligence (AI)</a>
+        </div>
       </div>
     </div>
 
@@ -750,6 +774,7 @@
           <p class="img_description">rgb(0,0,255)</p>
         </li>
       </ul>
+      
     </div>
 
     <div class="x">
@@ -762,8 +787,8 @@
 
     <div id="container">
       <div class="a">
-        <img src="img/bin.png" width="100px" />
-        <img src="img/w.png" width="100px" />
+        <img src="img/bin.png" width="50px" />
+        <img src="img/w.png" width="50px" />
       </div>
     </div>
 
@@ -776,15 +801,11 @@
       let g = 0;
       let b = 0;
 
-      let msg = ["Are you sure?", "Don't do it.", "STOP!"];
-      let i = Math.floor(Math.random() * 3);
+      var msg = ["Are you sure?", "Don't do it.", "STOP!"];
 
       function myFunction() {
+        var i = Math.floor(Math.random() * msg.length);
         alert(msg[i]);
-        location.reload();
-        // Change the color of the shape when the image is clicked
-        r = 255;
-        document.getElementById("trapezoid").style.color = rgb(r, g, b);
       }
 
       $(document).ready(function () {
@@ -825,7 +846,7 @@
 
         var greatest = x > y ? x : y;
 
-        var speedModifier = 0.1;
+        var speedModifier = 0.06;
 
         var speed = Math.ceil(greatest / speedModifier);
 
